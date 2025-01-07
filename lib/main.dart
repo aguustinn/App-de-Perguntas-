@@ -15,7 +15,8 @@ class PerguntaApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Perguntas'),
+          title: Text('Perguntas:'),
+          centerTitle: true,
         ),
         body: Column(
           children: <Widget>[
