@@ -25,7 +25,7 @@ class _PerguntaAppState extends State<PerguntaApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Perguntas:'),
+          title: Text('Perguntas'),
           centerTitle: true,
         ),
         body: Column(
