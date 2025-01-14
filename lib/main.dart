@@ -1,8 +1,7 @@
 import 'package:curso/resultado.dart';
 import 'package:flutter/material.dart';
-import './questao.dart';
 import './resposta.dart';
-
+import './questionario.dart';
 
 main() {
   runApp(PerguntaApp());
@@ -33,6 +32,12 @@ class _PerguntaAppState extends State<PerguntaApp> {
     }
   }
 
+  void reiniciar() {
+    setState(() {
+      _perguntaSelecionada = 0;
+    });
+  }
+
   bool get temPerguntaSelecionada {
     return _perguntaSelecionada < _perguntas.length;
   }
@@ -50,21 +55,14 @@ class _PerguntaAppState extends State<PerguntaApp> {
 
     return MaterialApp(
       home: Scaffold(
-          appBar: AppBar(
-            title: Text('Perguntas'),
-            centerTitle: true,
-          ),
-          body: temPerguntaSelecionada
-              ? Column(
-                  children: <Widget>[
-                    Questao(
-                        _perguntas[_perguntaSelecionada]['texto'].toString()),
-                    ...respostas1,
-                  ],
-                )
-              : Resultado(
-                  'Parabéns!',
-                )),
+        appBar: AppBar(
+          title: Text('Perguntas'),
+          centerTitle: true,
+        ),
+        body: temPerguntaSelecionada
+            ? Questionario(_perguntas, _perguntaSelecionada, respostas1)
+            : Resultado('Parabéns!', reiniciar),
+      ),
     );
   }
 }
